@@ -1,0 +1,22 @@
+* exemplo 02
+
+Vs  1 0 dc=5
+r1  1 0 2
+r2  1 0 5
+
+* salva as correntes em cada resistor
+.save all @r1[p] @r2[p]
+
+.dc Vs 0 10 0.1
+
+* Control Statements
+.control
+  run
+  *print all
+  plot '-vs#branch' vs v(1)
+  * os comando abaixo são equivalentes ao anterior
+  *plot vs#branch
+  *plot -vs#branch
+.endc
+
+.end

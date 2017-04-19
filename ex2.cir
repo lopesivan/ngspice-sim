@@ -1,0 +1,6 @@
+* Series DC test
+V1 1 0 10V
+R1 1 2 10k
+R2 2 0 40k
+.op
+.END

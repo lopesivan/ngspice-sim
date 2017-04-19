@@ -1,0 +1,25 @@
+* exemplo de diodo
+
+.include spice_models/D1N4148.mod
+
+VD  1 0 dc=5
+r1  1 2 40k
+d1  1 2 D1N4148
+r2  2 0 50k
+d2  2 0 D1N4148
+
+.save all @d1[id] @d2[R1] @id[p]
+
+.dc VD -5 2 0.05
+
+* Control Statements
+.control
+  run
+*  plot v(1)
+   plot '-@d1[id]' vs v(1)
+*  settype power @r1[p]
+*  plot @r1[p] vs v(1)
+.endc
+
+.end
+

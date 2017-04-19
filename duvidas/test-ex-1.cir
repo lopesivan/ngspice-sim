@@ -1,0 +1,16 @@
+sem titulo definido
+
+.param amplitude = 5v
+
+; transfer parameter 'amplitude' to plot 'constant' in the .control section
+.csparam amplitude = {amplitude}
+
+v1 1 0 10
+r1 1 0 40
+
+.control
+    listing e
+    echo o valor eh = $&amplitude
+.endc
+
+.end

@@ -1,0 +1,31 @@
+* Schematics Netlist *
+vcm         n1 0    dc 0 ac 1 sin(0 2.5 {SRCFREQ})
+R_Rtest     n2 0    10Meg
+a14         n1 n2   cheby_LP_3KHz
+.model cheby_LP_3KHz s_xfer(in_offset=0.0 gain=1.0 int_ic=[0 0 0] num_coeff=[0.0 0.0 1.0] den_coeff=[1.0 1.42562 1.51620])
+.param SRCFREQ= 100KHz
+.control
+tran 1e-6 1e-3
+write test_tran.raw
+* tran.ps show microvolts range!
+hardcopy tran.ps n2 xlimit 0.0 0.0001
+noise V(n2) vcm dec 333 1Hz 100KHz 16
+print inoise_total onoise_total
+*first option to get all of the output ( two files )
+* 'setplot' chooses the "plot" (set of vectors);
+* 'display' shows all the available vector variable names
+*  in the chosen "plot"
+setplot noise1
+display
+write test_noise1.raw all
+*~ plot onoise_spectrum inoise_spectrum
+hardcopy noise1.ps onoise_spectrum inoise_spectrum
+* noise2 vectors are just 1 entry long !
+setplot noise2
+display
+write test_noise2.raw all
+*~ plot inoise_total onoise_total
+hardcopy noise2.ps inoise_total onoise_total
+* second option ( all in one raw-file )
+write testall.raw noise1.all noise2.all
+.endc

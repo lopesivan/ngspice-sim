@@ -1,0 +1,30 @@
+How to access parameter values in transient simulation and interactive interpreter
+
+.param R = 1kOhm
+.param C = 1nF
+.param pi = 3.14159265359
+.param fb = {1/(2*pi*R*C)}  ; Q1. Why does pi need to be defined above?
+.param amplitude = 5V
+.param pointsPerCyle = 20
+.param numCycles = 1.5
+
+.csparam R = {R}
+
+VDD 1 0     SIN(0V {amplitude} {fb})
+R1  1 2     {R}
+C1  2 0     {C}
+
+.TRAN {1/159kHz/20}         {1.5/159kHz}
+*.TRAN {1/{fb}/{pointsPerCyle}}        {numCycles/fb}; Q2. How to access the parameter values defined above in tran sim?
+.PLOT TRAN V(1) V(2)
+
+.CONTROL
+    run
+    plot V(1) V(2)
+    * plot {V(1)/{amplitude}} {V(2)/{amplitude}}    Q3. How to access the parameter values defined above in interactive interpreter and/or ngspice scripts?
+    *print $&fb
+    echo $&R
+
+.ENDC
+
+.end

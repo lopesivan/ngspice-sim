@@ -1,0 +1,11 @@
+* subcircuitos exemplo
+
+v1 1 0 10V
+v2 3 0 2V
+r1 1 2 10k
+r2 2 3 20k
+r3 2 0 30k
+
+.op
+
+.END

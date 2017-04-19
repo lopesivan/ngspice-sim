@@ -1,0 +1,16 @@
+How to access parameter values in transient simulation and interactive interpreter
+
+.func omega(x) { 2*pi*x }
+R1 1 0 1MEG
+B1 1 0 I = 25 * sin(pi) * cos(omega(5))
+
+.control
+    listing e
+    define bar(x) ( x / pi )
+    print pi
+*    print omega(101)
+    run
+    plot V(1)*pi
+.endc
+
+.end

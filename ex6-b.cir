@@ -1,0 +1,12 @@
+model in IF−ELSE block
+
+.param m0=0 m1=1
+M1 1 2 3 4 N1 W=1 L= 0.5
+
+.if (m0==1 )
+.model N1 NMOS level=49 Version= 3.1
+.elseif (m1==1 )
+.model N1 NMOS level=49 Version= 3.2.4; <−− selected
+.else
+.model N1 NMOS level=49 Version = 3.3.0
+.endif

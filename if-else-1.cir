@@ -1,0 +1,11 @@
+device instance in IF−ELSE block
+
+.param ok=0 ok2=1
+v1 1 0 1
+R1 1 0 2
+
+.if ( ok && ok2 )
+R11 1 0 2
+.else
+R11 1 0 0.5 ; <−− selected
+.endif

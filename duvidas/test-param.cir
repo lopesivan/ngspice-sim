@@ -1,0 +1,22 @@
+How to access parameter values in transient simulation and interactive interpreter
+
+.param aap = 3
+.param pp = 3*aap
+.func omega(x) { 2*aap*x }
+C1 1 0 { aap }
+R1 1 0 1MEG
+B1 1 0 I = 25 * aap
+.tran {1u/aap} {1/aap}
+
+.control
+    listing e
+*   define bar(x) ( x / aap )
+*   tran 1u aap 
+    run
+*   print aap 
+*   print omega(101)
+    plot V(1)*aap
+.endc
+
+.end
+

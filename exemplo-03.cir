@@ -1,0 +1,34 @@
+PREPARATÓRIO 1
+
+* DEPARTAMENTO DE ENGENHARIA ELÉTRICA
+* LABORATÓRIO DE CIRCUITOS ELÉTRICOS CC/CA (TEE00116)
+* Aluno: Ivan Lopes
+
+.param vR1=470
+.param vR3=470
+.param vR2=560
+.param vCC=12V
+
+vs 1 0 {vCC}
+r1 1 2 {vR1}
+r3 2 3 {vR3}
+r2 3 0 {vR2}
+
+
+.op
+.control
+  run
+  print all
+  let req = v(2) - v(1)
+  let ddpR1 = v(2) - v(1)
+  let ddpR2 = v(3) - v(2)
+  echo Vfonte  = $&v(1) V
+  echo V(R1) \ = $&ddpR1 V
+  echo V(R2) \ = $&ddpR2 V
+  echo V(R3) \ = $&v(3) V
+  *echo $&vR1
+  *echo $&vR3
+  *echo $&vR2
+.endc
+
+.END

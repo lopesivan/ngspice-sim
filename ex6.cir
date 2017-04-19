@@ -1,0 +1,11 @@
+test csparam
+
+.param TEMPS = 27
+.csparam newt = {3*TEMPS}
+.csparam mytemp = '2 + TEMPS'
+
+.control
+echo $&newt $&mytemp
+.endc
+
+.end

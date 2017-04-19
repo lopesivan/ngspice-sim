@@ -1,0 +1,18 @@
+Measure and access result
+
+vin  in  0   dc=1
+Rser in  1   10
+Lser 1   out 1mH  ic=0
+Cpar out 0   10nF ic=0
+
+.tran 0 1ms uic
+
+.measure tran vtest find v(out) AT=100us
+
+.controlc
+  listing e
+  run
+  write measeval_bug2.raw
+.endc
+
+.end

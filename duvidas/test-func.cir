@@ -1,0 +1,20 @@
+How to access parameter values in transient simulation and interactive interpreter
+
+.param pi = 3.1459
+.func omega(x) { 2*pi*x }
+.param ZCx = 1 / (omega(1000) * 1u)
+C1 1 0 { omega(111) }
+R1 1 0 1MEG
+B1 1 0 I = 25 * sin(omega(1k)*time)
+.tran {1/omega(1000)} {100/omega(1000)}
+
+.control
+    listing e
+    define bar(x) ( omega(x) / pi )
+*   tran 1u omega(11) 
+    print omega(111) bar(1)
+    run
+    plot V(1)*pi
+.endc
+
+.end

@@ -1,0 +1,16 @@
+How to access parameter values in transient simulation and interactive interpreter
+
+V1 1 0 dc=1
+C1 1 0 1uF
+R1 1 0 1MEG
+.tran 0.1 1
+
+.control
+    listing e
+    define bar(x) ( x / pi )
+    print bar(1)
+    run
+    plot V(1)*bar(1)
+.endc
+
+.end

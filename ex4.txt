@@ -1,0 +1,45 @@
+1 : measure and access result
+    16 : vin in 0 dc=1
+    17 : rser in 1 10
+    18 : lser 1 out 1mh ic=0
+    19 : cpar out 0 10nf ic=0
+    20 : .tran 0 1ms uic
+    10 : .end
+[Setup Devices]
+Using SPARSE 1.4 as Direct Linear Solver
+[op]
+[measure]
+
+  Measurements for Transient Analysis
+
+vtest = 7.661642e-01 found v(out) at = 100us
+
+ngspice 10 -> display
+Here are the vectors currently active:
+
+Title: measure and access result
+Name: tran1 (Transient Analysis)
+Date: Wed Jan 11 10:56:26  2017
+
+ngspice 11 -> listing param
+
+ global symbol definitions:
+       ---> yes = 1
+       ---> true = 1
+       ---> no = 0
+       ---> false = 0
+       ---> pi = 3.14159
+       ---> e = 2.71828
+       ---> c = 2.99792e+08
+       ---> i = 1
+       ---> kelvin = -273.15
+       ---> echarge = 1.60218e-19
+       ---> boltz = 1.38065e-23
+       ---> planck = 6.62607e-34
+       ---> vtest = 0.766164
+ngspice 12 -> print $.vtest
+7.6616417434150519e-01 = 7.661642e-01
+ngspice 13 -> echo $.vtest
+7.6616417434150519e-01
+ngspice 14 ->
+ 
